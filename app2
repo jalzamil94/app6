@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<br><br>
+
+<br>
+
+<ion-content>
+</ion-content>
+<ion-content>
+  <ion-fab vertical="center" horizontal="start" slot="fixed">
+
+     <ion-fab-button><ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+            <ion-fab-button>
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-fab-button>
+            <ion-fab-button>
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<ion-content>
+  <div class="length"></div>
+  <ion-fab-button vertical="bottom" horizontal="end">
+  <ion-fab-button><ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab-button>
+</ion-content>
+
+
