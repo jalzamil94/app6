@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-item *ngFor="let item of names">
+  <ion-avatar slot="start">
+    <ion-img src="../../assets/image/person.png"></ion-img>
+  </ion-avatar >
+  <ion-label>
+    <h2>{{item.name}}</h2>
+    <p>Consultant</p>
+  </ion-label>
+</ion-item>
+  </ion-content>
+
+--------------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-item *ngFor="let item of names">
+  <ion-thumbnail slot="start">
+    <ion-img src="../../assets/image/person2.png"></ion-img>
+  </ion-thumbnail >
+  <ion-label>
+    <h2>{{item.name}}</h2>
+    <p>Consultant</p>
+  </ion-label>
+</ion-item>
+  </ion-content>
+
+-----home.ts--------
+
+import { call } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf } from '@angular/common';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail],
+})
+export class HomePage {
+names=[
+  { name:'jasem alzamil'},
+    { name:'Mohammed al '},
+      { name:'jasem al '}
+
+]
+Sliding: IonItemSliding | undefined;
+item: any;
+  constructor() {}
+  call(sliding:IonItemSliding){
+    console.log('call me please')
+    sliding.close();
+  }
+}
+
