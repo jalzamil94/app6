@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-img class="imgSize" src="../../assets/image/angular1.jpg"></ion-img>
+<img src="../../assets/image/angular1.jpg">
+
+
+
+  </ion-content>
