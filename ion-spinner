@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="middle">
+  <ion-spinner *ngIf="loading"></ion-spinner>
+</div>
+  </ion-content>
+
+
+
+
+
+
+
+رابط اشكال السبنر
+https://ionicframework.com/docs/api/spinner
+
+
+--------home.ts-----
+import { call } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf],
+})
+export class HomePage {
+  loading:boolean=true;
+
+
+]
+Sliding: IonItemSliding | undefined;
+item: any;
+  constructor() {
+    this.getAllData();
+  }
+ 
+  getAllData(){
+    this.loading=true;
+    setTimeout(() =>{
+      this.loading=false;
+
+    }, 3000);
+  }
+}
