@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      my frist page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-button (click)="showMsg()" color="dark">Default</ion-button>
+  <ion-button color="danger" expand="block">block button</ion-button>
+   <ion-button expand="full">full button</ion-button>
+    <ion-button fill="clear">clear button</ion-button>
+    <ion-button fill="outline">outline button</ion-button>
+    <ion-button color="primary" fill="solid">solid button</ion-button>
+    <ion-button color="danger" size="small">block button</ion-button>
+    <ion-button >large button
+      <ion-icon slot="start" name="albums"></ion-icon>
+    </ion-button>
+   
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>copyright</ion-title>
+  </ion-toolbar>
+</ion-footer>
