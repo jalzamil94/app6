@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="اسحب للتحديث"
+      refreshingSpinner="circles"
+      refreshingText="جاري التحديث...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>
+
+
+-------------------home.ts------------
+
+  handleRefresh(event: any) {
+  setTimeout(() => {
+
+    event.target.complete(); 
+  }, 2000);
+}
