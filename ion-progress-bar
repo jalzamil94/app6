@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<h2> determinate 50% </h2>
+<ion-progress-bar value="0.5"></ion-progress-bar>
+<h2> indeterminate 50% </h2>
+<ion-progress-bar color="danger" type="indeterminate" reversed=""></ion-progress-bar>
+  </ion-content>
