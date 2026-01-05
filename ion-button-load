@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-button expand="block" (click)="loadData()"> load data </ion-button>
+
+</ion-content>
+
+
+-----------home.ts-----------
+export class HomePage {
+
+  constructor(private loadctrl:LoadingController) { }
+
+  async loadData(){
+    let loading=await this.loadctrl.create({
+      message:'please wait while loading ...',
+      duration:3000
+    });
+    await loading.present();
+  }
+
+}
