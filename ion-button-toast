@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-button expand="block" (click)="showToast()"> load data </ion-button>
+
+</ion-content>
+
+
+
+------------------home-ts---------------
+export class HomePage {
+
+  constructor(private toastCtrl:ToastController) { }
+
+  async showToast(){
+    let loading=await this.toastCtrl.create({
+      message:'please wait while loading ...',
+      position:'top',
+      color:'danger',
+      duration:3000,
+      buttons:[
+        {
+          side:'start',
+          icon:'person',
+          text:'profile',
+          handler:()=>{
+            console.log('show my profile')
+          }
+        },
+        {
+        icon:'close-circle',
+        role:'cancel'
+        }
+      ],
+      cssClass:'ion-text-center'
+      
+    });
+    await loading.present();
+  }
+
+}
