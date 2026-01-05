@@ -1,0 +1,3 @@
+import{ addIcons} from 'ionicons'
+import {person, call,mailOutline ,closeCircle} from 'ionicons/icons';
+addIcons({person ,call,mailOutline ,closeCircle});
