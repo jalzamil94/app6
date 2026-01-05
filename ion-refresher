@@ -23,8 +23,9 @@
 -------------------home.ts------------
 
   handleRefresh(event: any) {
+    console.log("went to fetch data")
   setTimeout(() => {
-
+    console.log("data  load")
     event.target.complete(); 
   }, 2000);
 }
