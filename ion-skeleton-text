@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-list *ngIf="loading">
+  <ion-item>
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated=""></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h2>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </h2>
+      <p>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="loading">
+  <ion-item>
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated=""></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h2>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </h2>
+      <p>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="loading">
+  <ion-item>
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated=""></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h2>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </h2>
+      <p>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+  </ion-content>
+
+
+--------home.ts------------\
+export class HomePage {
+  loading:boolean=true;
+
+  getAllData(){
+    this.loading=true;
+    setTimeout(() =>{
+      this.loading=false;
+
+    }, 3000);
+  }
