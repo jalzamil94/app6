@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-button expand="block" (click)="showActionSheet()"> load data </ion-button>
+
+</ion-content>
+
+
+
+---------------------homets----------------
+
+export class HomePage {
+ 
+  constructor(private toastctrl:ToastController,
+    private ActionSheetCtrl:ActionSheetController
+  ) {}
+async showActionSheet(){
+  let loading=await this.ActionSheetCtrl.create({
+    header:'Album',
+    buttons:[
+      {
+      icon:'person',
+      text:'Delete',
+      handler:()=>{
+        console.log('Show profile ');
+      }
+    },
+    {
+      text:'Share',
+      icon:'share',
+      handler:()=>{
+        console.log('Share button clicked');
+      }
+    },
+    {
+      text:'Play',
+      icon:'play',
+      handler:()=>{
+        console.log('Play button clicked');
+      }
+    },
+    {
+      text:'Favorite',
+      icon:'heart',
+      handler:()=>{
+        console.log('Favorite button clicked');
+      }
+    },
+    {
+      text:'Cancel',
+      icon:'closeCircle',
+      role:'cancel',
+      handler:()=>{
+        console.log('Cancel button clicked');
+      }
+    }
+  ],
+  });
+  await loading.present();
+  
+}
+}
