@@ -8,6 +8,7 @@
 
 <ion-content>
   <ion-item>
+    <ion-icon name="mail-outline" slot="start"></ion-icon>
     <ion-label position="fixed">fixed email </ion-label>
     <ion-input type="email" placeholder="mail@ipa.edu.sa" clearInput></ion-input>
   </ion-item>
