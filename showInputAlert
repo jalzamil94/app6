@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-button expand="block" (click)="showInputAlert()"> show Alert  </ion-button>
+
+</ion-content>
+
+
+-------------------------home.ts------------------
+import { call, text } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import {AlertController,ActionSheetController, ToastController, LoadingController,IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonButton } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [IonButton,  IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent],
+})
+export class HomePage {
+ 
+  constructor(private alertctrl:AlertController
+  ) {}
+async showInputAlert(){
+  let loading=await this.alertctrl.create({
+    header:'Confirm Delete',
+    message:'are you sure want delete this item',
+    
+    inputs:[
+      {
+      
+      type:'text',
+      placeholder:'username',
+       name:'uname'
+      },
+      {
+       type:'password',
+       placeholder:'password',
+       name:'pw'
+      }
+    ],
+    buttons:[
+      {
+        text:'cancel',
+        role:"cancel"
+      },
+      {
+        text:'login',
+        handler:(data)=>{
+          console.log('user logged',data);
+          console.log('user name', data.uname);
+          console.log("password is " , data.pw)
+        }
+      }
+    ]
+  });
+  await loading.present();
+}
+}
