@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-label position="fixed">fixed Email</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+  <ion-item>
+    <ion-input label="Floating label" labelPlacement="floating" placeholder="Enter text"></ion-input>
+  </ion-item>
+
+
+<ion-item>
+  <ion-label position="stacked"> stacked Email</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+</ion-content>
