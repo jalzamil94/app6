@@ -38,7 +38,8 @@ async showInputAlert(){
       
       type:'text',
       placeholder:'username',
-       name:'uname'
+       name:'uname',
+       value:'jalzamil@gmail.com'
       },
       {
        type:'password',
