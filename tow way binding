@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-icon name="person" slot="start"></ion-icon>
+  <ion-label>Frist Name</ion-label>
+  <ion-input type="text" [(ngModel)]="name"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-icon name="mail-outline" slot="start"></ion-icon>
+  <ion-label>Email</ion-label>
+  <ion-input type="email" [(ngModel)]="email" ></ion-input>
+</ion-item>
+<ion-button expand="block" (click)="saveData()">Login</ion-button>
+</ion-content>
