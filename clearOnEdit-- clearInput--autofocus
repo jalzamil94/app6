@@ -25,5 +25,8 @@
     <ion-label position="fixed">fixed email </ion-label>
     <ion-input type="text" placeholder="full name" autofocus="" clearOnEdit clearInput></ion-input>
   </ion-item>
-  
+   <ion-label>Comment</ion-label>
+  <ion-item>
+    <ion-textarea rows="2" clearOnEdit=""></ion-textarea>
+  </ion-item>
 </ion-content>
