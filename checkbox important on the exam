@@ -76,10 +76,9 @@ export class HomePage {
   constructor() {} 
 
   loggedin(ev){
+    this.checked=ev.detail.checked
     console.log(ev.detail)
   
   }
 }
 
-
-home
