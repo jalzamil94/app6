@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+ <ion-label>choose your favorit Nationality</ion-label>
+ <ion-select [(ngModel)]="Nationality" interface="popover" placeholder="Nationality" cancelText="إلغاء" okText="موافق">
+  <ion-select-option value="egypt">egypt</ion-select-option>
+  <ion-select-option value="saudi">saudi</ion-select-option>
+ </ion-select>
+</ion-item>
+<ion-button (click)="loggedin()" expand="block">save</ion-button>
+
+</ion-content>
+
+-----------------home.ts-------------------
+
+import { call, text } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { AlertController, ActionSheetController, ToastController, LoadingController, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonButton, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [FormsModule, IonButton, IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption],
+})
+export class HomePage {
+ Nationality:boolean;
+ 
+  constructor() {} 
+
+  loggedin(){
+   
+    console.log(this.Nationality)
+  
+  }
+}
+
+----------------------------home.pg-------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+ <ion-label>choose your favorit Nationality</ion-label>
+ <ion-select (ionChange)="loggedin($event)" interface="popover" placeholder="Nationality" cancelText="إلغاء" okText="موافق">
+  <ion-select-option value="egypt">egypt</ion-select-option>
+  <ion-select-option value="saudi">saudi</ion-select-option>
+ </ion-select>
+</ion-item>
+
+
+</ion-content>
+--------------home.ts---------------
+import { call, text } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { AlertController, ActionSheetController, ToastController, LoadingController, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonButton, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [FormsModule, IonButton, IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption],
+})
+export class HomePage {
+ Nationality:boolean;
+ 
+  constructor() {} 
+
+  loggedin(ev){
+   
+    console.log(ev.detail.value)
+  
+  }
+}
+
+
+
