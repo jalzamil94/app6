@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-label>Countries</ion-label>
+  <ion-select placeholder="country" (ionChange)="selectCountry($event)">
+    <ion-select-option *ngFor="let country of countries,let i=index" [value]="i"> {{country.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label>City</ion-label>
+  <ion-select placeholder="City" [(ngModel)]="selectedCity">
+    <ion-select-option *ngFor="let city of cities" [value]="city"> {{city}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-button expand="block" (click)="save()">Save</ion-button>
+
+
+<ion-list>
+  <ion-list-header>
+    <ion-label>Choose gender</ion-label>
+  </ion-list-header>
+</ion-list>
+<ion-radio-group [(ngModel)]="gender">
+  <ion-item>
+    <ion-label>Male</ion-label>
+    <ion-radio color="primary" slot="start" value="male"></ion-radio>
+  </ion-item>
+   <ion-item>
+    <ion-label>Female</ion-label>
+    <ion-radio color="danger" slot="start" value="female"></ion-radio>
+  </ion-item>
+<ion-button expand="block" (click)="savedGender()">Save</ion-button>
+</ion-radio-group>
+</ion-content>
+
+--------------home.ts---------
+import { call, text } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { AlertController, ActionSheetController, ToastController, LoadingController, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonButton, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption, IonRadioGroup, IonRadio, IonListHeader } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [IonListHeader, IonRadio, IonRadioGroup, FormsModule, IonButton, IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption],
+})
+export class HomePage {
+  gender;
+  savedGender(){
+    console.log(this.gender)
+  }
+  
+countries=[
+  {name:'KSA',
+    cities:['Riyadh' , 'Dammam']
+  },
+  { name:'egy',
+    cities:['Cairo' , 'Alex']
+},
+{ name:'kuwait',
+  cities:[ 'kuwait' ,'Jahrah' ]
+}
+];
+selectedCountry;
+selectedCity;
+cities=[];
+
+
+  constructor() {}
+
+selectCountry(ev){
+  let country= this.countries[ev.detail.value];
+  this.cities=country.cities;
+  this.selectedCountry=country.name;
+}
+save(){
+  console.log('selected country is :' +this.selectedCountry);
+  console.log('selected city is :' +this.selectedCity);
+}
+}
