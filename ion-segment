@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My First App
+    </ion-title>
+  </ion-toolbar>
+  
+
+</ion-header>
+
+<ion-content>
+<ion-item>
+</ion-item>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+    <ion-segment [(ngModel)]="slectedSegment" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="chats">
+        <ion-label>Chats</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="updates">
+        <ion-label>updates</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="communities">
+        <ion-label>communities</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="calls">
+        <ion-label>calls</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>copyright</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+
+---------------home.ts--------
+
+import { call, text } from 'ionicons/icons';
+import { Component , } from '@angular/core';
+import { AlertController, ActionSheetController, ToastController, LoadingController, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonFooter, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonImg, IonAvatar, IonThumbnail, IonSpinner, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonButton, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption, IonRadioGroup, IonRadio, IonListHeader, IonDatetime, IonSegment, IonSegmentButton } from '@ionic/angular/standalone';
+import { CommonModule, NgForOf, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [IonListHeader, IonRadio, IonRadioGroup, FormsModule, IonButton, IonItemOptions, IonFooter, IonLabel, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonItemDivider, IonList, IonItemSliding, IonItemOption, NgForOf, IonImg, IonAvatar, IonThumbnail, IonSpinner, NgIf, IonSkeletonText, IonProgressBar, IonRefresher, IonRefresherContent, IonInput, IonTextarea, IonCheckbox, IonToggle, IonSelect, IonSelectOption, IonDatetime, IonSegment, IonSegmentButton],
+})
+export class HomePage {
+ slectedSegment;
+  segmentChanged(ev){
+    console.log(ev.target.value)
+    this.slectedSegment=ev.target.value;
+  }
+  
+
+
+
+  constructor() {}
+
+
+}
