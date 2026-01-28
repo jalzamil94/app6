@@ -4,18 +4,35 @@
       My First App
     </ion-title>
   </ion-toolbar>
-  
-
 </ion-header>
 
 <ion-content>
-<ion-item>
-</ion-item>
+<div class="center">
+<div class="chats" *ngIf="selectedSegment=='chats'">
+  <p>Chats Window</p>
+
+</div>
+
+<div class="updates" *ngIf="selectedSegment=='updates'">
+  <p>updates Window</p>
+</div>
+<div class="communities" *ngIf="selectedSegment=='communities'">
+    <p>communities Window</p>
+</div>
+<div class="calls" *ngIf="selectedSegment=='calls'">
+    <p>calls Window</p>
+</div>
+
+</div>
+
+
 
 </ion-content>
+
+
 <ion-footer>
     <ion-toolbar>
-    <ion-segment [(ngModel)]="slectedSegment" (ionChange)="segmentChanged($event)">
+    <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="chats">
         <ion-label>Chats</ion-label>
         <ion-icon name="chatbox"></ion-icon>
@@ -40,10 +57,7 @@
   <ion-toolbar>
     <ion-title>copyright</ion-title>
   </ion-toolbar>
-</ion-footer>
-
-
----------------home.ts--------
+</ion-footer>---------------home.ts--------
 
 import { call, text } from 'ionicons/icons';
 import { Component , } from '@angular/core';
@@ -92,3 +106,22 @@ bootstrapApplication(AppComponent, {
   ],
 });
 
+-----home.scss---\
+.imgSize{
+  height: 50%;
+  width: 50%;
+}
+.middle{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
