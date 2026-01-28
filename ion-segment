@@ -18,17 +18,21 @@
     <ion-segment [(ngModel)]="slectedSegment" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="chats">
         <ion-label>Chats</ion-label>
+        <ion-icon name="chatbox"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="updates">
         <ion-label>updates</ion-label>
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
       </ion-segment-button>
 
       <ion-segment-button value="communities">
         <ion-label>communities</ion-label>
+        <ion-icon name="people"></ion-icon>
       </ion-segment-button>
 
       <ion-segment-button value="calls">
         <ion-label>calls</ion-label>
+        <ion-icon name="call"></ion-icon>
       </ion-segment-button>
     </ion-segment>
     
@@ -67,3 +71,24 @@ export class HomePage {
 
 
 }
+
+
+---------main.ts------------
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import{ addIcons} from 'ionicons'
+import {person, call,mailOutline ,closeCircle,play,share,heart,chatbox , chatboxEllipsesOutline,people } from 'ionicons/icons';
+addIcons({person ,call,mailOutline ,closeCircle,play,share,heart,chatbox,chatboxEllipsesOutline, people });
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
+});
+
