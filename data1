@@ -1,0 +1,88 @@
+ionic g service services/data/data
+
+--------------fristpage.ts---------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonRouterLink } from '@ionic/angular/standalone';
+import {  RouterLink } from '@angular/router';
+import{NavController} from "@ionic/angular/standalone";
+import { analytics } from 'ionicons/icons';
+import { Data } from 'src/app/services/data/data';
+@Component({
+  selector: 'app-fristpage',
+  templateUrl: './fristpage.page.html',
+  styleUrls: ['./fristpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule, RouterLink]
+})
+export class FristpagePage implements OnInit {
+
+  constructor( private navCtrl:NavController , private data:Data) { }
+
+  ngOnInit() {
+  }
+login(){
+console.log('authenticating.....')
+setTimeout(()=>{
+  this.navCtrl.navigateForward('/secondpage');
+},2000)
+}
+info(id){
+  //this.navCtrl.navigateForward('/secondpage/'+ id);
+this.data.setParams({id})
+this.navCtrl.navigateForward('/secondpage')
+}
+}
+---------second.ts-------------
+import { routes } from './../../app.routes';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton,NavController } from '@ionic/angular/standalone';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Data } from 'src/app/services/data/data';
+@Component({
+  selector: 'app-secondpage',
+  templateUrl: './secondpage.page.html',
+  styleUrls: ['./secondpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule ,RouterLink]
+})
+export class SecondpagePage implements OnInit {
+  employeeId: string;
+
+  constructor( private route:ActivatedRoute, private navCtrl:NavController , private data:Data) { }
+
+  ngOnInit() {
+    this.getEmployeeId();
+  }
+  GoBack(){
+    this.navCtrl.pop()
+  }
+  getEmployeeId()
+  {
+    //this.employeeId=this.route.snapshot.paramMap.get('id');
+    this.employeeId=this.data.getParams().id;
+  }
+
+}
+-------data----
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Data {
+  navParams;
+  setParams(body){
+    this.navParams=body;
+
+  }
+  getParams(){
+    return this.navParams
+  }
+}
+
