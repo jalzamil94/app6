@@ -49,20 +49,23 @@ export class FristpagePage implements OnInit {
       <ion-title size="large">secondpage</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-button expand="block" routerLink="/fristpage" routerDirection="back">frist page</ion-button>
 </ion-content>
+
 -------------ts-----------------------------
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import{IonicModule} from '@ionic/angular';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-secondpage',
   templateUrl: './secondpage.page.html',
   styleUrls: ['./secondpage.page.scss'],
   standalone: true,
-  imports: [ CommonModule, IonicModule]
+  imports: [ CommonModule, IonicModule ,RouterLink]
 })
 export class SecondpagePage implements OnInit {
 
@@ -72,7 +75,6 @@ export class SecondpagePage implements OnInit {
   }
 
 }
-
 --------------------------main.ts--------------
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
