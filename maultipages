@@ -1,0 +1,93 @@
+-----------frist-page-----------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>fristpage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-button expand="block" routerLink="/secondpage">GO To second page</ion-button>
+</ion-content>
+
+------------ts----------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonRouterLink } from '@ionic/angular/standalone';
+import {  RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-fristpage',
+  templateUrl: './fristpage.page.html',
+  styleUrls: ['./fristpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule, RouterLink]
+})
+export class FristpagePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+---------------secondpag----------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+   <ion-buttons>
+    <ion-back-button icon="chevron-back-circle-outline" text="GoBack" defaultHref="/fristpage"></ion-back-button>
+   </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">secondpage</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+-------------ts-----------------------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+
+@Component({
+  selector: 'app-secondpage',
+  templateUrl: './secondpage.page.html',
+  styleUrls: ['./secondpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule]
+})
+export class SecondpagePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+--------------------------main.ts--------------
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import { addIcons }  from 'ionicons';
+import{chevronBackCircleOutline} from 'ionicons/icons'
+addIcons ({chevronBackCircleOutline})
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
+});
