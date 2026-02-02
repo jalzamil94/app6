@@ -1,0 +1,69 @@
+-------frispage.html--------
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>fristpage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-button expand="block" (click)="login()">GO To second page</ion-button>
+</ion-content>
+
+-----------------------ts---------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonRouterLink } from '@ionic/angular/standalone';
+import {  RouterLink } from '@angular/router';
+import{NavController} from "@ionic/angular/standalone";
+@Component({
+  selector: 'app-fristpage',
+  templateUrl: './fristpage.page.html',
+  styleUrls: ['./fristpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule, RouterLink]
+})
+export class FristpagePage implements OnInit {
+
+  constructor( private navCtrl:NavController) { }
+
+  ngOnInit() {
+  }
+login(){
+console.log('authenticating.....')
+setTimeout(()=>{
+  this.navCtrl.navigateForward('/secondpage');
+},2000)
+}
+}
+
+-------------pagesecondhtml-----
+
+-------ts------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import{IonicModule} from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton,NavController } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-secondpage',
+  templateUrl: './secondpage.page.html',
+  styleUrls: ['./secondpage.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, IonicModule ,RouterLink]
+})
+export class SecondpagePage implements OnInit {
+
+  constructor(private navCtrl:NavController) { }
+
+  ngOnInit() {
+  }
+  GoBack(){
+    this.navCtrl.pop()
+  }
+
+}
