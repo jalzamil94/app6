@@ -1,0 +1,49 @@
+------------------modal.html.-------------------------
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+    <ion-buttons>
+  <ion-button fill="clear" color="dark" (click)="dismiss()"></ion-button>
+  <ion-icon name="close" slot="icon-only"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-text *ngIf="text">{{text}}</ion-text>
+<ion-item>
+  <ion-label>
+    Enter your Email
+  </ion-label>
+  <ion-input [(ngModel)]="inputText"></ion-input>
+</ion-item>
+</ion-content>
+------------------------------------modal.ts..................
+
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule,NgModel } from '@angular/forms';
+import {IonContent, IonHeader, IonTitle, IonToolbar, ModalController } from '@ionic/angular/standalone';
+import{IonicModule} from "@ionic/angular";
+
+
+@Component({
+  selector: 'app-modal',
+  templateUrl: './modal.page.html',
+  styleUrls: ['./modal.page.scss'],
+  standalone: true,
+  imports: [IonicModule,CommonModule,FormsModule]
+})
+export class ModalPage implements OnInit {
+@Input() text:string
+inputText: string;
+  constructor(private modalctrl:ModalController) { }
+
+  ngOnInit() {
+  }
+
+  dismiss(){
+    this.modalctrl.dismiss({inpuText:this.inputText});
+  }
+}
