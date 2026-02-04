@@ -1,0 +1,81 @@
+--------frist.page.html-------------------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>first-page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 1
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+    <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 2
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+    <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 3
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+      <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 4
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+-------------------main.ts-----------------------
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import{addIcons} from 'ionicons';
+import {ellipsisVerticalOutline} from 'ionicons/icons'
+addIcons({ellipsisVerticalOutline})
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
+});
