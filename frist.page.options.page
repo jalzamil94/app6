@@ -1,0 +1,148 @@
+----------------frist.page.html-----------------------
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>first-page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item >
+      <ion-label>
+        <h2>
+          Employee 1
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="showOptions($event,'employee1')">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+    <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 2
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="showOptions($event,'employee2')">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+    <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 3
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="showOptions($event,'employee3')">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+      <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>
+          Employee 4
+        </h2>
+        <p>HR Department</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear"(click)="showOptions($event,'employee4')">
+        <ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+--------------fristpage.ts------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton, IonIcon,PopoverController } from '@ionic/angular/standalone';
+import { OptionsPage } from '../options/options.page';
+import { IonicModule } from '@ionic/angular';
+
+@Component({
+  selector: 'app-fristpage',
+  templateUrl: './fristpage.page.html',
+  styleUrls: ['./fristpage.page.scss'],
+  standalone: true,
+  imports: [ IonicModule, CommonModule, FormsModule]
+})
+export class FristpagePage implements OnInit {
+[x: string]: any;
+
+  constructor(private popoverCtrl:PopoverController) { }
+
+  ngOnInit() {
+  }
+ async showOptions(ev,user){
+let pop=await this.popoverCtrl.create({
+  component:OptionsPage,
+event:ev,
+componentProps:{user}
+});
+await pop.present()
+let result=await pop.onDidDismiss();
+console.log('option:' ,result.data)
+  }
+
+}
+-----------------options-html----------
+
+
+<ion-content [fullscreen]="true">
+  <h6 *ngIf="user">user : {{user}}</h6>
+<ion-list>
+  <ion-item (click)="dismiss('Delete')">
+    <ion-icon  name="trash-outline" slot="start"></ion-icon>
+    <ion-label>Delete</ion-label>
+  </ion-item>
+</ion-list>
+<ion-list>
+  <ion-item (click)="dismiss('Edit')">
+    <ion-icon  name="create-outline" slot="start"></ion-icon>
+    <ion-label>Edit</ion-label>
+  </ion-item>
+</ion-list>
+<ion-list>
+  <ion-item (click)="dismiss('Change password')">
+    <ion-icon  name="lock-closed-outline" slot="start"></ion-icon>
+    <ion-label>Change password</ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>
+-------------options.ts-----------------
+
+import { Component, Input, input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PopoverController,IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonIcon, IonLabel } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
+
+@Component({
+  selector: 'app-options',
+  templateUrl: './options.page.html',
+  styleUrls: ['./options.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, FormsModule,IonicModule]
+})
+export class OptionsPage implements OnInit {
+@Input() user:string;
+  constructor(private popCtrl:PopoverController) { }
+
+  ngOnInit() {
+  }
+  dismiss(data){
+
+    this.popCtrl.dismiss(data)
+  }
+
+}
