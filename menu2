@@ -1,0 +1,207 @@
+ionic g page pages/menu
+------------app.routers.route-------------------------------------
+import { Routes } from '@angular/router';
+import { MenuPage } from './pages/menu/menu.page';
+
+export const routes: Routes = [
+  {
+    path: 'menu',
+    component: MenuPage,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage),
+      },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./pages/contact/contact.page').then((m) => m.ContactPage),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./pages/about/about.page').then((m) => m.AboutPage),
+      },
+    ],
+  },
+
+  {
+    path: 'menu',
+    redirectTo: '/menu/home',
+    pathMatch: 'full',
+  },
+];
+----------------menu.html------------------
+<ion-menu contentId="main">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>My menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+      <ion-item *ngFor="let p of pages" [routerLink]="p.url">
+        <ion-icon [name]="p.icon " slot="start"></ion-icon>
+        <ion-label> {{p.name}} </ion-label>
+      </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+---------------------menu.ts------------
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-menu',
+  standalone: true,
+  imports: [IonicModule, CommonModule, RouterModule],
+  templateUrl: './menu.page.html',
+})
+export class MenuPage {
+
+  pages = [
+    {
+      name: 'Home',
+      url: '/menu/home',
+      icon: 'home',
+    },
+    {
+      name: 'Contacts',
+      url: '/menu/contact',
+      icon: 'people',
+    },
+    {
+      name: 'About',
+      url: '/menu/about',
+      icon: 'information-circle',
+    },
+  ];
+
+}
+---------------------------------------------home.html-------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+        <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+
+--------------home.ts--------------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from "@ionic/angular";
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+  standalone: true,
+  imports: [ CommonModule, FormsModule, IonicModule]
+})
+export class HomePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+------------------------contact.html---------------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+        <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">contact</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+--------------------------------contact.ts---------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from "@ionic/angular";
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-contact',
+  templateUrl: './contact.page.html',
+  styleUrls: ['./contact.page.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, IonicModule]
+})
+export class ContactPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+-----------------------about.html--------------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>about</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">about</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+----------------------about.ts-------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from "@ionic/angular";
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-about',
+  templateUrl: './about.page.html',
+  styleUrls: ['./about.page.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, IonicModule]
+})
+export class AboutPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
