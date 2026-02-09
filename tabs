@@ -1,0 +1,69 @@
+انشاء صفحه 
+ ionic g page pages/about
+
+-------------app.routes----------------------
+import { Routes } from '@angular/router';
+import { TabsPage } from './pages/tabs/tabs.page';
+
+export const routes: Routes = [
+  {
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage),
+      },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./pages/contact/contact.page').then((m) => m.ContactPage),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./pages/about/about.page').then((m) => m.AboutPage),
+      },
+    ],
+  },
+
+  {
+    path: 'tabs',
+    redirectTo: '/tabs/home',
+    pathMatch: 'full',
+  },
+];
+--------------------------tabs.html-------------
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" > 
+        <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="contact">
+      <ion-icon name="people"></ion-icon>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+  
+</ion-tabs>
+---------------------main.ts----------------
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import{addIcons} from 'ionicons';
+import {ellipsisVerticalOutline,person,home,people,informationCircle} from 'ionicons/icons'
+addIcons({ellipsisVerticalOutline,person,home,people,informationCircle})
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
+});
