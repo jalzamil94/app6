@@ -45,6 +45,7 @@ export const routes: Routes = [
     </ion-tab-button>
     
     <ion-tab-button tab="about">
+      <ion-badge color="danger">5</ion-badge>
       <ion-icon name="information-circle"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
