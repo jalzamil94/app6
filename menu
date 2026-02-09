@@ -1,0 +1,102 @@
+--------approuter.route.ts---------------------
+
+
+import { Routes } from '@angular/router';
+import { MenuPage } from './pages/menu/menu.page';
+
+export const routes: Routes = [
+  {
+    path: 'menu',
+    component: MenuPage,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage),
+      },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./pages/contact/contact.page').then((m) => m.ContactPage),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./pages/about/about.page').then((m) => m.AboutPage),
+      },
+    ],
+  },
+
+  {
+    path: 'menu',
+    redirectTo: '/menu/home',
+    pathMatch: 'full',
+  },
+];
+--------------menu.html-------------------
+<ion-menu contentId="main">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let p of pages" [routerLink]="p.url">
+        <ion-icon [name]="p.icon " slot="start"></ion-icon>
+        <ion-label> {{p.name}} </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+------------------menu.ts----------------------
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-menu',
+  standalone: true,
+  imports: [IonicModule, CommonModule, RouterModule],
+  templateUrl: './menu.page.html',
+})
+export class MenuPage {
+
+  pages = [
+    {
+      name: 'Home',
+      url: '/menu/home',
+      icon: 'home',
+    },
+    {
+      name: 'Contacts',
+      url: '/menu/contacts',
+      icon: 'call',
+    },
+    {
+      name: 'About',
+      url: '/menu/about',
+      icon: 'information-circle',
+    },
+  ];
+
+}
+---------------------main.ts------------------
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import{addIcons} from 'ionicons';
+import {ellipsisVerticalOutline,person,home,people,informationCircle} from 'ionicons/icons'
+addIcons({ellipsisVerticalOutline,person,home,people,informationCircle})
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
+});
