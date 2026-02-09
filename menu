@@ -73,7 +73,7 @@ export class MenuPage {
     {
       name: 'Contacts',
       url: '/menu/contacts',
-      icon: 'call',
+      icon: 'people',
     },
     {
       name: 'About',
