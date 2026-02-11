@@ -1,0 +1,146 @@
+----------home.html----------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-searchbar></ion-searchbar>
+    </ion-col>
+    
+  </ion-row>
+          <ion-col>
+            <ion-card>
+      <img src="https://media.istockphoto.com/id/624853560/photo/alphabet-letters-around-open-book.jpg?s=612x612&w=0&k=20&c=xFia41Yb4Oz_aRKFQGJbVJA6G3PIgjILe_eRthzO-ow=">
+      
+      </ion-card>
+    </ion-col>
+  <ion-row style="margin-top: 4rem ; ">
+    <ion-col size="6">
+     <ion-card-content routerLink="/tabs/about" style="background-color: cadetblue; padding: 40px;">
+     <div>About</div>
+     </ion-card-content>
+    </ion-col>
+     <ion-col size="6">
+     <ion-card-content routerLink="/tabs/contact" style="background-color: darkkhaki; padding: 40px;">
+     <div>Contact</div>
+     </ion-card-content>
+    </ion-col>
+  </ion-row>
+<ion-row>
+    <ion-col size="6">
+      <ion-card-content style="background-color: rgb(66, 79,79); padding: 40px;">
+     <div>IonCard 3</div>
+     </ion-card-content>
+  </ion-col>
+    <ion-col size="6">
+      <ion-card-content style="background-color: chartreuse; padding: 40px;">
+     <div>IonCard 4</div>
+     </ion-card-content>
+  </ion-col>
+          <ion-col>
+            <ion-card>
+      <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaXDnestTY3cZCZ7TgxH8yU3u2cUKm0BjCeQ&s"></ion-img>
+      
+      </ion-card>
+    </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>
+
+----------------------home.فس-------------
+
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonSearchbar, IonImg, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+  standalone: true,
+  imports: [IonSearchbar, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonImg, IonCard, IonCardContent, RouterLink]
+})
+export class HomePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+--------about.html-------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>about</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+</ion-content>
+----------------about.ts-------------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonBackButton, IonButton, IonButtons } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-about',
+  templateUrl: './about.page.html',
+  styleUrls: ['./about.page.scss'],
+  standalone: true,
+  imports: [IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,  IonBackButton]
+})
+export class AboutPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+--------------------contact.html------------
+<ion-header [translucent]="true">
+  <ion-toolbar>
+       <ion-buttons >
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+</ion-content>
+------------------contact.ts-----------------
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
+@Component({
+  selector: 'app-contact',
+  templateUrl: './contact.page.html',
+  styleUrls: ['./contact.page.scss'],
+  standalone: true,
+  imports: [IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,RouterLink]
+})
+export class ContactPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
